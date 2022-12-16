@@ -1,22 +1,25 @@
 import java.time.LocalDate;
 
 public class Main {
+    public static int currentYear = LocalDate.now().getYear();
     public static void main(String[] args) {
         System.out.println("Задача 1");
-        checkForLeapYear(2020);
+        printLeapYear(currentYear);
 
         System.out.println("Задача 2");
-        int currentYear = LocalDate.now().getYear();
         checkOSAndYear(0, currentYear);
 
         System.out.println("Задача 3");
-        System.out.printf("Потребуется дней: %d", calculateDeliveryTime(120));
-
+        printDeliveryTime(120);
     }
 
     // Task 1
-    public static void checkForLeapYear(int year) {
-        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+    public static boolean checkForLeapYear(int year) {
+        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+    }
+    public static void printLeapYear(int year){
+        boolean flag = checkForLeapYear(year);
+        if (flag){
             System.out.println(year + " год является високосным");
         } else {
             System.out.println(year + " год не является високосным");
@@ -61,5 +64,8 @@ public class Main {
             }
         }
         return deliveryTime;
+    }
+    public static void printDeliveryTime(int distance){
+        System.out.printf("Потребуется дней: %d", calculateDeliveryTime(distance));
     }
 }
