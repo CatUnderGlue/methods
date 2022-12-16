@@ -2,6 +2,7 @@ import java.time.LocalDate;
 
 public class Main {
     public static int currentYear = LocalDate.now().getYear();
+
     public static void main(String[] args) {
         System.out.println("Задача 1");
         printLeapYear(currentYear);
@@ -17,9 +18,10 @@ public class Main {
     public static boolean checkForLeapYear(int year) {
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
-    public static void printLeapYear(int year){
+
+    public static void printLeapYear(int year) {
         boolean flag = checkForLeapYear(year);
-        if (flag){
+        if (flag) {
             System.out.println(year + " год является високосным");
         } else {
             System.out.println(year + " год не является високосным");
@@ -29,25 +31,23 @@ public class Main {
 
     // Task 2
     public static void checkOSAndYear(int os, int year) {
-        switch (os) {
-            case 0:
-                if (year < 2015) {
-                    System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-                } else {
-                    System.out.println("Установите версию приложения для iOS по ссылке");
-                }
-                break;
-            case 1:
-                if (year < 2015) {
-                    System.out.println("Установите облегченную версию приложения для Android по ссылке");
-                } else {
-                    System.out.println("Установите версию приложения для Android по ссылке");
-                }
-                break;
-            default:
-                System.out.println("Не удалось распознать вашу операционную систему");
+        if (os == 0) {
+            if (year < currentYear) {
+                System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+            } else {
+                System.out.println("Установите версию приложения для iOS по ссылке");
+            }
+        } else if (os == 1) {
+            if (year < currentYear) {
+                System.out.println("Установите облегченную версию приложения для Android по ссылке");
+            } else {
+                System.out.println("Установите версию приложения для Android по ссылке");
+            }
+        } else {
+            System.out.println("Не удалось распознать вашу операционную систему");
         }
     }
+
 
     // Task 3
     public static int calculateDeliveryTime(int distance) {
@@ -65,7 +65,8 @@ public class Main {
         }
         return deliveryTime;
     }
-    public static void printDeliveryTime(int distance){
+
+    public static void printDeliveryTime(int distance) {
         System.out.printf("Потребуется дней: %d", calculateDeliveryTime(distance));
     }
 }
